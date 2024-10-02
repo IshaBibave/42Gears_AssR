@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>42GEARS Dashboard</title>
+    <script src="https://kit.fontawesome.com/9964fde0ff.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            background-color: #4267B2;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #3b5998;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .header .user {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .user span {
+            margin-left: 10px;
+        }
+
+        .project-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .project-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+            max-width: 500px;
+            margin: 10px;
+        }
+
+        .project-card .project-card-header {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .project-card .project-card-body {
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            display: grid;
+            grid-template-columns: 20% 80%;
+        }
+
+        .project-card .project-card-body .project-card-left-body-wrapper {
+            border-right: 1px solid #000;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .project-card .project-card-body .project-card-left-body-wrapper .running-text {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .project-card .project-card-body .project-card-right-body-wrapper {
+            padding: 10px;
+        }
+
+        .project-card .project-card-body .project-card-right-body-wrapper .details {
+            padding: 10px;
+            float: right;
+        }
+
+        .project-card .downloading {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #000;
+        }
+
+        .project-card .downloading .progress {
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .project-card .downloading .progress .progress-bar-green {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 50%;
+            transition: width 0.5s ease;
+        }
+
+        .project-card .downloading .progress .progress-bar-red {
+            height: 100%;
+            background-color: red;
+            width: 50%;
+            transition: width 0.5s ease;
+        }
+
+        .project-footer {
+            padding: 10px;
+        }
+
+        .project-card .more-options {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+        }
+
+        .options-menu {
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px 0;
+            display: none;
+            width: max-content;
+        }
+
+        .options-menu.show {
+            display: block;
+        }
+
+        .options-menu a {
+            padding: 8px 15px;
+            text-decoration: none;
+            color: black;
+            display: block;
+        }
+
+        .options-menu a:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <a href="#">
+            <img src="logo.png" alt="Logo" height="30px">
+        </a>
+        <a href="#home">Menu 1</a>
+        <a href="#news">Menu 2</a>
+        <a href="#contact">Menu 3</a>
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <h1>TestProject</h1>
+            <div class="user">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Test User</span>
+            </div>
+        </div>
+        <div class="project-container">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div><i class="fa-solid fa-user-tie"></i></div>
+                    <div>User: sayedameen_Pro</div>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-card-left-body-wrapper">
+                        <div class="running-text"><i class="fa-solid fa-circle" style="color: #63E6BE;"></i>
+                            <span>Running</span>
+                        </div>
+                        <div class="running-text"> <i class="fa-light fa-stopwatch-20"></i> <span>3.1 hours</span></div>
+                    </div>
+                    <div class="project-card-right-body-wrapper">
+                        <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="details">Details <i class="fa-solid fa-chevron-right" style="color: #63E6BE;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <i class="fa-regular fa-circle-play fa-xl"></i>
+                    <i class="fa-regular fa-circle-pause fa-xl"></i>
+                </div>
+                <div class="more-options">
+                    <i class="fa-solid fa-ellipsis"></i>
+                    <div class="options-menu">
+                        <a href="#">Share Project</a>
+                        <a href="#">Copy Project</a>
+                        <a href="#">Refresh</a>
+                        <a href="#">Logs</a>
+                        <a href="#">Edit</a>
+                        <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div><i class="fa-solid fa-user-tie"></i></div>
+                    <div>User: sayedameen_Pro</div>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-card-left-body-wrapper">
+                        <div class="running-text"><i class="fa-solid fa-circle" style="color: #63E6BE;"></i>
+                            <span>Running</span>
+                        </div>
+                        <div class="running-text"> <i class="fa-light fa-stopwatch-20"></i> <span>3.1 hours</span></div>
+                    </div>
+                    <div class="project-card-right-body-wrapper">
+                        <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="details">Details <i class="fa-solid fa-chevron-right" style="color: #63E6BE;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <i class="fa-regular fa-circle-play fa-xl"></i>
+                    <i class="fa-regular fa-circle-pause fa-xl"></i>
+                </div>
+                <div class="more-options">
+                    <i class="fa-solid fa-ellipsis"></i>
+                    <div class="options-menu">
+                        <a href="#">Share Project</a>
+                        <a href="#">Copy Project</a>
+                        <a href="#">Refresh</a>
+                        <a href="#">Logs</a>
+                        <a href="#">Edit</a>
+                        <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div><i class="fa-solid fa-user-tie"></i></div>
+                    <div>User: sayedameen_Pro</div>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-card-left-body-wrapper">
+                        <div class="running-text"><i class="fa-solid fa-circle" style="color: #63E6BE;"></i>
+                            <span>Running</span>
+                        </div>
+                        <div class="running-text"> <i class="fa-light fa-stopwatch-20"></i> <span>3.1 hours</span></div>
+                    </div>
+                    <div class="project-card-right-body-wrapper">
+                        <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="details">Details <i class="fa-solid fa-chevron-right" style="color: #63E6BE;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="downloading">
+                    <div><strong>Packages:</strong> Downloading Packages... </div>
+                    <div class="progress">
+                        <div class="progress-bar-green" style="width: 62%;"></div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <i class="fa-regular fa-circle-play fa-xl"></i>
+                    <i class="fa-regular fa-circle-pause fa-xl"></i>
+                </div>
+                <div class="more-options">
+                    <i class="fa-solid fa-ellipsis"></i>
+                    <div class="options-menu">
+                        <a href="#">Share Project</a>
+                        <a href="#">Copy Project</a>
+                        <a href="#">Refresh</a>
+                        <a href="#">Logs</a>
+                        <a href="#">Edit</a>
+                        <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div><i class="fa-solid fa-user-tie"></i></div>
+                    <div>User: sayedameen_Pro</div>
+                </div>
+                <div class="project-card-body">
+                    <div class="project-card-left-body-wrapper">
+                        <div class="running-text"><i class="fa-solid fa-circle" style="color: #63E6BE;"></i>
+                            <span>Running</span>
+                        </div>
+                        <div class="running-text"> <i class="fa-light fa-stopwatch-20"></i> <span>3.1 hours</span></div>
+                    </div>
+                    <div class="project-card-right-body-wrapper">
+                        <div>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="details">Details <i class="fa-solid fa-chevron-right" style="color: #63E6BE;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="downloading">
+                    <div><strong>Packages:</strong> Downloading Packages... </div>
+                    <div class="progress">
+                        <div class="progress-bar-red" style="width: 20%;"></div>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <i class="fa-regular fa-circle-play fa-xl"></i>
+                    <i class="fa-regular fa-circle-pause fa-xl"></i>
+                </div>
+                <div class="more-options">
+                    <i class="fa-solid fa-ellipsis"></i>
+                    <div class="options-menu">
+                        <a href="#">Share Project</a>
+                        <a href="#">Copy Project</a>
+                        <a href="#">Refresh</a>
+                        <a href="#">Logs</a>
+                        <a href="#">Edit</a>
+                        <a href="#">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const moreOptions = document.querySelectorAll('.more-options');
+        const optionsMenu = document.querySelectorAll('.options-menu');
+
+        moreOptions.forEach((option, index) => {
+            option.addEventListener('click', () => {
+                optionsMenu[index].classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+
+</html>
